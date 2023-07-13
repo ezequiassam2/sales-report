@@ -4,12 +4,12 @@ All URIs are relative to [Sales Report API](http://localhost:8080/api/v1)
 
 | Method                                                          | HTTP request                | Description                              |
 |-----------------------------------------------------------------|-----------------------------|------------------------------------------|
-| [**upload_sales**](doc.md#Sales_Upload)                         | **POST** /sales/upload      | Uploads the sales report to be processed |
-| [**get_product_transactions**](doc.md#Get_Product_Transactions) | **GET** /sales/transactions | Get the transaction list of the products |
-| [**login_user**](doc.md#login_user)                             | **POST** /login             | Logs user into the system                |
-| [**logout_user**](doc.md#logout_user)                           | **GET** /logout             | Logs out current logged in user session  |
+| [**Sales Upload**](doc.md#sales-upload)                         | **POST** /sales/upload      | Uploads the sales report to be processed |
+| [**Get Product Transactions**](doc.md#get-product-transactions) | **GET** /sales/transactions | Get the transaction list of the products |
+| [**Login User**](doc.md#login-user)                             | **POST** /login             | Logs user into the system                |
+| [**Logout User**](doc.md#logout-user)                           | **GET** /logout             | Logs out current logged in user session  |
 
-# **Sales_Upload**
+# **Sales Upload**
 It uploads the sales report file, processes it, and stores it in the database.
 
 ### Example
@@ -37,13 +37,13 @@ Authorization is required
 
 ### Responses
 
-| Code | Description          | Example                        |
-|------|----------------------|--------------------------------|
-| 200  | Successful operation | [Success](doc.md#Success_POST) |
-| 405  | Invalid input        | [Invalid](doc.md#Invalid_POST) |
-| 500  | Error                | [Error](doc.md#Error_POST)     |
+| Code | Description          | Example                   |
+|------|----------------------|---------------------------|
+| 200  | Successful operation | [Success](doc.md#success) |
+| 405  | Invalid input        | [Invalid](doc.md#invalid) |
+| 500  | Error                | [Error](doc.md#error)     |
 
-#### Success_POST
+#### Success
 ```json
 {
   "code": 200,
@@ -51,7 +51,7 @@ Authorization is required
 }
 ```
 
-#### Invalid_POST
+#### Invalid
 ```json
 {
   "code": 402,
@@ -59,7 +59,7 @@ Authorization is required
 }
 ```
 
-#### Error_POST
+#### Error
 ```json
 {
   "code": 500,
@@ -67,7 +67,7 @@ Authorization is required
 }
 ```
 
-# **Get_Product_Transactions**
+# **Get Product Transactions**
 Returns the list of imported product transactions with a totalizer of the value of transactions carried out.
 
 
@@ -85,12 +85,12 @@ Authorization is required
 
 ### Responses
 
-| Code | Description          | Example                       |
-|------|----------------------|-------------------------------|
-| 200  | Successful operation | [Success](doc.md#Success_GET) |
-| 500  | Error                | [Error](doc.md#Error_GET)     |
+| Code | Description          | Example                     |
+|------|----------------------|-----------------------------|
+| 200  | Successful operation | [Success](doc.md#success-1) |
+| 500  | Error                | [Error](doc.md#error-1)     |
 
-#### Success_GET
+#### Success
 ```json
 [
   {
@@ -110,7 +110,7 @@ Authorization is required
 ]
 ```
 
-#### Error_GET
+#### Error
 ```json
 {
   "code": 500,
