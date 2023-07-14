@@ -4,10 +4,10 @@ All URIs are relative to [Sales Report API](http://localhost:8080/api/v1)
 
 | Method                                                          | HTTP request                | Description                              |
 |-----------------------------------------------------------------|-----------------------------|------------------------------------------|
-| [**Sales Upload**](doc.md#sales-upload)                         | **POST** /sales/upload      | Uploads the sales report to be processed |
-| [**Get Product Transactions**](doc.md#get-product-transactions) | **GET** /sales/transactions | Get the transaction list of the products |
-| [**Login User**](doc.md#login-user)                             | **POST** /login             | Logs user into the system                |
-| [**Logout User**](doc.md#logout-user)                           | **GET** /logout             | Logs out current logged in user session  |
+| [**Sales Upload**](API.md#sales-upload)                         | **POST** /sales/upload      | Uploads the sales report to be processed |
+| [**Get Product Transactions**](API.md#get-product-transactions) | **GET** /sales/transactions | Get the transaction list of the products |
+| [**Login User**](API.md#login-user)                             | **POST** /login             | Logs user into the system                |
+| [**Logout User**](API.md#logout-user)                           | **GET** /logout             | Logs out current logged in user session  |
 
 # **Sales Upload**
 It uploads the sales report file, processes it, and stores it in the database.
@@ -39,9 +39,9 @@ Authorization is required
 
 | Code | Description          | Example                   |
 |------|----------------------|---------------------------|
-| 200  | Successful operation | [Success](doc.md#success) |
-| 405  | Invalid input        | [Invalid](doc.md#invalid) |
-| 500  | Error                | [Error](doc.md#error)     |
+| 200  | Successful operation | [Success](API.md#success) |
+| 405  | Invalid input        | [Invalid](API.md#invalid) |
+| 500  | Error                | [Error](API.md#error)     |
 
 #### Success
 ```json
@@ -87,8 +87,8 @@ Authorization is required
 
 | Code | Description          | Example                     |
 |------|----------------------|-----------------------------|
-| 200  | Successful operation | [Success](doc.md#success-1) |
-| 500  | Error                | [Error](doc.md#error-1)     |
+| 200  | Successful operation | [Success](API.md#success-1) |
+| 500  | Error                | [Error](API.md#error-1)     |
 
 #### Success
 ```json
