@@ -16,3 +16,35 @@ services:
     volumes:
       - ./data/db:/var/lib/postgresql/data/
 
+  frontend:
+    container_name: web
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+
+    ports:
+      - '3000:3000'
+
+    volumes:
+      - ./web:/app/web
+
+    depends_on:
+      - backend
+
+  backend:
+    container_name: api
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+
+    env_file:
+      - ./api/.env
+
+    ports:
+      - '8000:8000'
+
+    volumes:
+      - ./api:/app/api
+
+    depends_on:
+      - psql
