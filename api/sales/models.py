@@ -3,7 +3,7 @@ import uuid
 from django.db import models
 
 
-class Transactions(models.Model):
+class Transaction(models.Model):
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -50,6 +50,6 @@ class Product(models.Model):
         decimal_places=2)
 
     transactions = models.ManyToManyField(
-        Transactions,
+        Transaction,
         verbose_name='list of transactions'
     )
