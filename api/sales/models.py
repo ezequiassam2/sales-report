@@ -4,6 +4,16 @@ from django.db import models
 
 
 class Transaction(models.Model):
+    VENDA_PRODUTOR = 1
+    VENDA_AFILIADO = 2
+    COMISSAO_PAGA = 3
+    COMISSAO_RECEBIDA = 4
+    TYPE_CHOISES = [
+        (VENDA_PRODUTOR, 'Venda Produtor'),
+        (VENDA_AFILIADO, 'Venda Afiliado'),
+        (COMISSAO_PAGA, 'Comissão Paga'),
+        (COMISSAO_RECEBIDA, 'Comissão Recebida'),
+    ]
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -12,6 +22,7 @@ class Transaction(models.Model):
 
     type = models.CharField(
         max_length=1,
+        choices=TYPE_CHOISES,
         null=False,
         blank=False)
 
@@ -42,6 +53,7 @@ class Product(models.Model):
         blank=True)
 
     name = models.CharField(
+        unique=True,
         max_length=30,
         null=False,
         blank=False)
