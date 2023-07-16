@@ -30,6 +30,9 @@ class Transaction(models.Model):
         null=False,
         blank=False)
 
+    class Meta:
+        ordering = ['date']
+
 
 class Product(models.Model):
     id = models.UUIDField(
