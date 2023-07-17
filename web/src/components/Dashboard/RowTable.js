@@ -16,6 +16,21 @@ export default function RowTable(props) {
     const {row} = props;
     const [open, setOpen] = React.useState(false);
 
+    const getType = (param) => {
+        switch (param) {
+            case 1:
+                return 'Venda produtor'
+            case 2:
+                return 'Venda afiliado'
+            case 3:
+                return 'Comissão paga'
+            case 4:
+                return 'Comissão recebida'
+            default:
+                return param
+        }
+    }
+
     return (
         <React.Fragment>
             <TableRow sx={{'& > *': {borderBottom: 'unset'}}}>
@@ -29,7 +44,7 @@ export default function RowTable(props) {
                     </IconButton>
                 </TableCell>
                 <TableCell component="th" scope="row">
-                    {row.product}
+                    {row.name}
                 </TableCell>
                 <TableCell align="center">{row.total}</TableCell>
             </TableRow>
@@ -50,14 +65,14 @@ export default function RowTable(props) {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {row.transactions.map((historyRow) => (
-                                        <TableRow key={historyRow.date}>
+                                    {row.transactions.map((transactionRow) => (
+                                        <TableRow key={transactionRow.date}>
                                             <TableCell component="th" scope="row">
-                                                {historyRow.date}
+                                                {transactionRow.date}
                                             </TableCell>
-                                            <TableCell>{historyRow.type}</TableCell>
-                                            <TableCell align="center">{historyRow.vendor}</TableCell>
-                                            <TableCell align="center">{historyRow.value}</TableCell>
+                                            <TableCell>{getType(transactionRow.type)}</TableCell>
+                                            <TableCell align="center">{transactionRow.vendor}</TableCell>
+                                            <TableCell align="center">{transactionRow.type !== 3 ? '+' : '-'} ${transactionRow.value}</TableCell>
                                         </TableRow>
                                     ))}
                                 </TableBody>

@@ -1,39 +1,47 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import CollapsibleTable from "./CollapsibleTable";
+import {Backdrop, CircularProgress} from "@mui/material";
 
 export default function Dashboard() {
-    function createData(product, total) {
-        return {
-            product,
-            total,
-            transactions: [
-                {
-                    date: '2020-01-05',
-                    type: 'Venda',
-                    vendor: 'Jose',
-                    value: 2.4,
-                },
-                {
-                    date: '2020-01-02',
-                    type: 'Comissão',
-                    vendor: 'Maria',
-                    value: 87.4,
-                },
-            ],
-        };
-    }
+    const [loading, setLoading] = useState(true);
+    const [data, setData] = useState([]);
+    const [progress, setProgress] = useState(true)
 
+    const handleCloseProgress = () => {
+        setProgress(false);
+    };
 
-    const rows = [
-        createData('Frozen yoghurt', 159),
-        createData('Ice cream sandwich', 237),
-        createData('Eclair', 262),
-        createData('Cupcake', 305),
-        createData('Gingerbread', 356),
-    ];
+    useEffect(() => {
+        function loadingProducts() {
+            return fetch('http://localhost:8000/api/v1/products', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                // body: JSON.stringify(credentials)
+            })
+                .then(resp => resp.json())
+                .then(jsonData => {
+                    setData(jsonData)
+                    setLoading(false)
+                    setProgress(false)
+                })
+        }
+
+        if (loading) {
+            loadingProducts()
+        }
+    })
 
     return <>
-        <h2>Dashboard</h2>
-        <CollapsibleTable data={rows}/>
+        <Backdrop
+            sx={{color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1}}
+            open={progress}
+            onClick={handleCloseProgress}
+        >
+            <CircularProgress color="inherit"/>
+        </Backdrop>
+        <h2>Dashboard Products</h2>
+        <CollapsibleTable data={data}/>
     </>
 }

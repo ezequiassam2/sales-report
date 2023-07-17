@@ -10,7 +10,7 @@ import RowTable from "./RowTable";
 
 
 export default function CollapsibleTable(props) {
-    return (
+    return <>
         <TableContainer component={Paper}>
             <Table aria-label="collapsible table">
                 <TableHead>
@@ -21,11 +21,11 @@ export default function CollapsibleTable(props) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {props.data.map((row) => (
-                        <RowTable key={row.product} row={row}/>
+                    {props.data && props.data.map((row) => (
+                        <RowTable key={row.name} row={row}/>
                     ))}
                 </TableBody>
             </Table>
         </TableContainer>
-    );
+    </>
 }
