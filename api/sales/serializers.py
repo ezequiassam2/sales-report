@@ -7,7 +7,13 @@ from .utils import file_to_transactions
 class TransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction
-        fields = '__all__'
+        fields = [
+            'id',
+            'type',
+            'date',
+            'value',
+            'vendor'
+        ]
 
 
 class ProductSerializer(serializers.ModelSerializer):

@@ -1,4 +1,5 @@
 from decimal import Decimal
+
 from rest_framework import permissions
 from rest_framework import status
 from rest_framework.exceptions import UnsupportedMediaType, ValidationError
@@ -7,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import Product, Transaction
-from .serializers import ProductSerializer, FileUploadSerializer, TransactionSerializer
+from .serializers import ProductSerializer, FileUploadSerializer
 
 
 class ProductList(APIView):
@@ -18,9 +19,12 @@ class ProductList(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request, format=None):
-        products = Product.objects.all()
-        serializer = ProductSerializer(products, many=True)
-        return Response(serializer.data)
+        try:
+            products = Product.objects.all()
+            serializer = ProductSerializer(products, many=True)
+            return Response(serializer.data)
+        except Exception as e:
+            return Response({'detail': f'Error {e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class TransactionsCreate(APIView):
@@ -38,7 +42,7 @@ class TransactionsCreate(APIView):
             transactions_list = serializer.save()
             for obj in transactions_list:
                 type_operation = int(obj['type'])
-                value = Decimal(obj['value'])
+                value = Decimal(f"{obj['value'][:-2]}.{obj['value'][-2:]}")
                 t_saved = Transaction.objects.create(
                     type=type_operation,
                     date=obj['date'],

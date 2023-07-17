@@ -4,6 +4,10 @@ from rest_framework import serializers
 
 
 def file_to_transactions(str_content_file=''):
+    """
+    Transforms the file content to the transaction list format, checking if each attribute is compatible with the pre-established pattern
+    """
+
     def get_value(start, end, str_regex):
         value = line[start:end]
         if not re.match(str_regex, value):

@@ -40,30 +40,27 @@ Authorization is required
 | Code | Description          | Example                   |
 |------|----------------------|---------------------------|
 | 200  | Successful operation | [Success](API.md#success) |
-| 405  | Invalid input        | [Invalid](API.md#invalid) |
-| 500  | Error                | [Error](API.md#error)     |
+| 400  | Business errors      | [Invalid](API.md#invalid) |
+| 500  | Not handled error    | [Error](API.md#error)     |
 
 #### Success
 ```json
 {
-  "code": 200,
-  "message": "Sucess"
+  "detail": "Sucess"
 }
 ```
 
 #### Invalid
 ```json
 {
-  "code": 402,
-  "message": "Invalid input"
+  "detail": "Invalid input x"
 }
 ```
 
 #### Error
 ```json
 {
-  "code": 500,
-  "message": "Error"
+  "detail": "Error description"
 }
 ```
 
@@ -88,7 +85,7 @@ Authorization is required
 | Code | Description          | Example                     |
 |------|----------------------|-----------------------------|
 | 200  | Successful operation | [Success](API.md#success-1) |
-| 500  | Error                | [Error](API.md#error-1)     |
+| 500  | Not handled error    | [Error](API.md#error-1)     |
 
 #### Success
 ```json
@@ -113,7 +110,6 @@ Authorization is required
 #### Error
 ```json
 {
-  "code": 500,
-  "message": "Error"
+  "detail": "Error"
 }
 ```
