@@ -31,7 +31,7 @@ class TransactionsCreate(APIView):
     """
     Creates the transactions from the received file
     """
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
     parser_classes = [MultiPartParser]
 
     def post(self, request, format=None):
