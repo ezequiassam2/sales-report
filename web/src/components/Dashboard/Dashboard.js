@@ -33,15 +33,19 @@ export default function Dashboard() {
         }
     })
 
-    return <>
-        <Backdrop
-            sx={{color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1}}
-            open={progress}
-            onClick={handleCloseProgress}
-        >
-            <CircularProgress color="inherit"/>
-        </Backdrop>
-        <h2>Dashboard Products</h2>
-        <CollapsibleTable data={data}/>
-    </>
+    return (
+        <React.Fragment>
+            <div data-testid="page-dash">
+                <Backdrop
+                    sx={{color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1}}
+                    open={progress}
+                    onClick={handleCloseProgress}
+                >
+                    <CircularProgress color="inherit"/>
+                </Backdrop>
+                <h3>Dashboard Products</h3>
+                <CollapsibleTable data={data}/>
+            </div>
+        </React.Fragment>
+    );
 }

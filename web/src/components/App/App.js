@@ -31,27 +31,35 @@ function App() {
     }*/
 
     return (
-        <React.StrictMode>
-            <StyledEngineProvider injectFirst>
-                <div className="wrapper">
-                    <h1>Sales Report</h1>
-                    <Box sx={{width: '100%'}}>
-                        <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
-                            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                                <Tab label="Dashboard" {...a11yProps(0)} />
-                                <Tab label="Upload" {...a11yProps(1)} />
-                            </Tabs>
+        <div className="wrapper">
+            <React.StrictMode>
+                <StyledEngineProvider injectFirst>
+                    <header>
+                        <h1>Sales Report</h1>
+                    </header>
+                    <main role="main">
+                        <Box sx={{width: '100%'}}>
+                            <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
+                                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                                    <Tab label="Dashboard" {...a11yProps(0)} />
+                                    <Tab label="Upload" {...a11yProps(1)} />
+                                </Tabs>
+                            </Box>
+                            <div role="heading" aria-level="2">
+                                <CustomTabPanel value={value} index={0}>
+                                    <Dashboard/>
+                                </CustomTabPanel>
+                            </div>
+                            <div role="heading" aria-level="3">
+                                <CustomTabPanel value={value} index={1}>
+                                    <FormInput/>
+                                </CustomTabPanel>
+                            </div>
                         </Box>
-                        <CustomTabPanel value={value} index={0}>
-                            <React.Fragment><Dashboard/></React.Fragment>
-                        </CustomTabPanel>
-                        <CustomTabPanel value={value} index={1}>
-                            <React.Fragment><FormInput/></React.Fragment>
-                        </CustomTabPanel>
-                    </Box>
-                </div>
-            </StyledEngineProvider>
-        </React.StrictMode>
+                    </main>
+                </StyledEngineProvider>
+            </React.StrictMode>
+        </div>
     );
 }
 
