@@ -3,6 +3,17 @@
 The objective of the Sales Report is to load the files of the transactions carried out in the sale of products in order to process and display them clearly with the accounted values.
 
 
+### Technologies used
+The Sales Report was structured using the BFF (Backend for Frontend) architecture and was planned so that each layer runs in different containers, including the database. Below is a list of all the technologies that were used in the project:
+
+- Backend
+  - `Python 3.10`  
+  - `Postgres 14.1`
+  - `Django Framework 4.2.3`
+- Frontend
+- `Node Js 16`
+- `React Js 18.2`
+
 #### Requirements
 
 Docker containers contain a complete Unix operating system, with all the necessary settings to administer container files. To manage the containers and synchronize with the project's Git repository, it is necessary to have the following packages installed in our system:
