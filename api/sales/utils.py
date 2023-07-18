@@ -14,8 +14,9 @@ def file_to_transactions(str_content_file=''):
             raise serializers.ValidationError(f'The value [{value}] does not match the specified')
         return value.strip()
 
-    content_list = str_content_file.strip().split('\n')
-    if not content_list:
+    str_content_file = str_content_file.strip()
+    content_list = str_content_file.split('\n')
+    if not str_content_file or not content_list:
         raise serializers.ValidationError('Empty content')
     transformed_transactions = []
     for line in content_list:
