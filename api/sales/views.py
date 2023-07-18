@@ -16,7 +16,7 @@ class ProductList(APIView):
     List all products
     """
 
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request, format=None):
         try:
@@ -31,7 +31,7 @@ class TransactionsCreate(APIView):
     """
     Creates the transactions from the received file
     """
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
     parser_classes = [MultiPartParser]
 
     def post(self, request, format=None):
