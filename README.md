@@ -11,8 +11,8 @@ The Sales Report was structured using the BFF (Backend for Frontend) architectur
   - `Postgres 14.1`
   - `Django Framework 4.2.3`
 - Frontend
-- `Node Js 16`
-- `React Js 18.2`
+  - `Node Js 16`
+  - `React Js 18.2`
 
 #### Requirements
 
@@ -63,3 +63,5 @@ After reading the requirement completely, I created the repository following the
 Ezequias Sampaio – ezequiassam@gmail.com
 
 >  This is a challenge by [Coodesh](https://coodesh.com/)
+
+>  Project presentation video is available [here](https://www.loom.com/share/08f1e882bb3c4a07ae029c987f765ceb)
